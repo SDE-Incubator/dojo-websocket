@@ -76,3 +76,10 @@ O payload da postagem é o seguinte:
 Material de suporte:
 
 https://socket.io/pt-br/how-to/use-with-react
+
+
+## Branchs
+main - contém o desáfio resolvido
+front-challenge - contém o desafio de criação da conexão no front-end
+back-challenge - contém o desafio de criação da conexão no back-end
+full-challenge - contém o desafio de criação da conexão em ambos os projetos
