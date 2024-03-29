@@ -1,0 +1,83 @@
+.chat-body {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+.chat-content {
+  display: flex;
+  width: 800px;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+
+.flex-row {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  flex-direction: row;
+  margin-top: 20px;
+}
+
+.flex-row input {
+  outline: none;
+  padding: 0.8rem 1rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
+  flex: 1;
+  height: 100%;
+}
+
+.flex-row input:focus {
+  border: 1.8px solid #3F3158;
+}
+
+.flex-row .login {
+  outline: none;
+  border: none;
+  background: #3F3158;
+  padding: 0.8rem 1rem;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.flex-row .login:hover {
+  background: #FCDF2B;
+  cursor: pointer;
+}
+
+.messages {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+  padding: 20px 0px;
+  overflow-y: scroll;
+}
+
+.message-content {
+  display: flex;
+  width: 100%;
+  background-color: white;
+  flex-direction: column;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 11px 11px -3px rgba(0,0,0,0.1);
+}
+
+.nickname {
+  color: #3F3158;
+  font-size: 13px;
+}
+
+.chat-title {
+  font-size: 3.5rem;
+  color: #3F3158;
+}
