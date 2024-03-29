@@ -7,27 +7,12 @@ function Chat({ nickname }) {
 
   useEffect(() => {
     socket.connect()
-
-    function onAllPosts(posts) {
-      setPosts(posts)
-    }
-
-    function onNewPost(newPost) {
-      setPosts(oldPosts => [newPost, ...oldPosts])
-    }
-
-    socket.on("all-posts", onAllPosts)
-    socket.on("new-post", onNewPost)
-
     return () => {
       socket.disconnect()
-      socket.off("all-posts", onAllPosts)
-      socket.off("new-post", onNewPost)
     }
   }, [])
 
   const sendNewPost = (message) => {
-    socket.emit("send-post", { nickname, message })
   }
 
 
