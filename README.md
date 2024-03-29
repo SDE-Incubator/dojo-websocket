@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Dojo Websocket
+O Projeto consiste em um fórum de envio de mensagens em tempo real
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Estrutura do Projeto
+O projeto foi criado utilizando React JS e NodeJs utilizando socketio para conexão via websocket, sendo criado com uma base de monolito.
 
-## Available Scripts
+```
+/src/config contém a conexão do socket com o servidor
+/src/pages contém as páginas do sistema e suas lógicas
+/src/templates contém o html das páginas e formulários
+/backend/ contém o código do backend em nodejs
+```
 
-In the project directory, you can run:
+## Back-end
+O Back-end foi gerado utilizando nodejs, para rodá-lo em desenvolvimendo é necessário executar os seguintes comandos:
+```
+cd backend/
+npm install
+npm start
 
-### `npm start`
+O sistema irá rodar na porta 3333.
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+O Back-end é responsável por escutar os seguintes eventos do websocket:
+```
+connection - momento em que o usuário é conectado ao socket
+send-post - momento em que um usuário envia uma nova postagem (mensagem) para plataforma
+```
+Além disso ele também é responsável por emitir os seguintes eventos:
+```
+all-posts - envia todos as postagens que foram realizadas até agora no momento em que o usuário é conectado
+new-post - envia para todos os usuários uma postagem que acabou de ser recebida
+```
+O payload da postagem é o seguinte:
+```
+{
+    nickname: string
+    message: string
+}
+```
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Material de suporte:
 
-### `npm test`
+https://socket.io/docs/v4/emitting-events/
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+https://socket.io/docs/v4/listening-to-events/
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Front-end
+Para inicializar a aplicação front-end basta executar os seguintes comandos:
+```
+npm install
+npm start
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+o front-end iniciará na porta 3000
+```
+O front-end é responsável por escutar os seguintes eventos do websocket:
+```
+all-posts - esse evento é responsável por receber todos as postagens que foram enviados até o momento
+new-post - esse evento é responsável por receber uma postagem que acabou de ser enviada
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Além disso ele também deve emitir o seguinte evento:
+```
+send-post - esse evento é responsável por enviar para o servidor uma nova postagem na plataforma
+```
 
-### `npm run eject`
+O payload da postagem é o seguinte:
+```
+{
+    nickname: string
+    message: string
+}
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Material de suporte:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+https://socket.io/pt-br/how-to/use-with-react
